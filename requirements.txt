@@ -1,0 +1,11 @@
+fastapi[all]
+uvicorn
+sqlalchemy
+pymysql
+cryptography
+sentence-transformers
+transformers
+elasticsearch
+python-dotenv
+torch
+tqdm

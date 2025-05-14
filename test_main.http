@@ -1,0 +1,51 @@
+# Test Task Suggestion RAG API endpoints
+
+# Check if the API is running
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+
+# Get system status
+GET http://127.0.0.1:8000/api/status
+Accept: application/json
+
+###
+
+# Suggest tasks based on project description using vector search
+POST http://127.0.0.1:8000/api/suggest-tasks
+Content-Type: application/json
+
+{
+  "project_description": "Build a web application for timesheet management with user authentication, role-based access, and reporting features.",
+  "num_suggestions": 3,
+  "use_hybrid_search": false
+}
+
+###
+
+# Suggest tasks based on project description using hybrid search
+POST http://127.0.0.1:8000/api/suggest-tasks
+Content-Type: application/json
+
+{
+  "project_description": "Develop an employee portal for tracking work hours and submitting timesheets",
+  "num_suggestions": 5,
+  "use_hybrid_search": true
+}
+
+###
+
+# Reload data from MySQL to Elasticsearch (admin endpoint)
+POST http://127.0.0.1:8000/api/reload-data
+Content-Type: application/json
+
+{}
+
+###
+
+# Test hello endpoint
+GET http://127.0.0.1:8000/hello/User
+Accept: application/json
+
+###
