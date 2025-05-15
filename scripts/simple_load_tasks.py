@@ -2,14 +2,21 @@
 Simplified script to load tasks directly from the database to Elasticsearch
 Only uses the task table with no dependencies on other tables
 """
+import os
+import sys
 import time
 import logging
-from simple_database import get_all_tasks
-from embedding import EmbeddingGenerator
-from elastic_search import ElasticSearchClient
-from utils import clean_text
 from tqdm import tqdm
 from typing import Dict, Any
+
+# Add project root to Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Import from new locations
+from src.data.database.simple_database import get_all_tasks
+from src.models.embedding.generator import EmbeddingGenerator
+from src.data.elasticsearch.client import ElasticSearchClient
+from src.utils.utils import clean_text
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

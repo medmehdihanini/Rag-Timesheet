@@ -2,13 +2,19 @@
 Initialize and run the task-based RAG system
 """
 import os
+import sys
 import logging
 import time
 import argparse
 from dotenv import load_dotenv
 import uvicorn
-from simple_load_tasks import load_tasks_to_elasticsearch
-from elastic_search import ElasticSearchClient
+
+# Add project root to Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Import from new locations
+from scripts.simple_load_tasks import load_tasks_to_elasticsearch
+from src.data.elasticsearch.client import ElasticSearchClient
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -47,7 +53,8 @@ def initialize_system():
 def start_api_server(host="0.0.0.0", port=8000, reload=False):
     """Start the FastAPI server"""
     logger.info(f"Starting API server on {host}:{port}")
-    uvicorn.run("main:app", host=host, port=port, reload=reload)
+    from src.api.app import app
+    uvicorn.run(app, host=host, port=port, reload=reload)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Initialize and run the task-based RAG system')

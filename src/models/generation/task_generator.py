@@ -1,7 +1,7 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 import logging
-from utils import clean_text, format_tasks_for_context, extract_tasks_from_generation
+from src.utils.utils import clean_text, format_tasks_for_context, extract_tasks_from_generation
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -39,7 +39,7 @@ class TaskGenerator:
                         context += f"{task_text}\n"
                     context += "\n"
         
-        prompt = f"{context}\nBased on the project description and similar tasks above, generate a list of 5 specific tasks for this project. Format tasks as a numbered list:"
+        prompt = f"{context}\nBased on the project description and similar tasks above, generate a list of 5 specific tasks for this project. Format tasks as a numbered list :"
         
         logger.debug(f"Prompt length: {len(prompt)}")
         

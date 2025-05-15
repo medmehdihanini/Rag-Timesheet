@@ -1,6 +1,12 @@
 import os
-from elastic_search_simplified import ElasticSearchClient
+import sys
 import logging
+
+# Add project root to Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Import from new location
+from src.data.elasticsearch.simplified_client import ElasticSearchClient
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

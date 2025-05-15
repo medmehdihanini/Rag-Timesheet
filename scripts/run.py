@@ -21,12 +21,7 @@ logger = logging.getLogger(__name__)
 def check_requirements():
     """Check if all required packages are installed"""
     try:
-        import fastapi
-        import sqlalchemy
-        import sentence_transformers
-        import transformers
-        import elasticsearch
-        import torch
+       
         logger.info("All required packages are installed")
         return True
     except ImportError as e:

@@ -1,3 +1,4 @@
+# Core dependencies
 fastapi[all]
 uvicorn
 sqlalchemy
@@ -9,3 +10,10 @@ elasticsearch
 python-dotenv
 torch
 tqdm
+
+# Development dependencies
+pytest
+black
+flake8
+isort
+mypy
