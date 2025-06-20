@@ -10,5 +10,10 @@ import uvicorn
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
 if __name__ == "__main__":
-    # For reload to work properly, we need to pass the app as an import string
-    uvicorn.run("src.api.app:app", host="0.0.0.0", port=8000, reload=True)
+    # Run without reload to avoid async cancellation issues during development
+    try:
+        uvicorn.run("src.api.app:app", host="0.0.0.0", port=8000, reload=False)
+    except KeyboardInterrupt:
+        print("Server stopped by user")
+    except Exception as e:
+        print(f"Server error: {e}")
