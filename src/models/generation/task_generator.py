@@ -37,13 +37,8 @@ class TaskGenerator:
                 "Create basic implementation",
                 "Perform initial testing",
                 "Prepare project documentation"
-            ],
-            "very_low_confidence": [
-                "I'm not sure what specific tasks would be appropriate for this project description.",
-                "The description provided doesn't seem to match typical project management contexts.",
-                "Could you provide more details about the project type and objectives?",
-                "The input appears to be unclear or outside my expertise area.",
-                "Please provide a more detailed project description for better task suggestions."
+            ],            "very_low_confidence": [
+                "I'm not sure what specific tasks would be appropriate for this input. Could you please provide a clearer project description related to software development, web applications, or other technical projects?"
             ]
         }
     

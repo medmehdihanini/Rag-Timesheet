@@ -108,18 +108,13 @@ async def suggest_tasks(request: TaskSuggestionRequest):
         logger.info(f"Query validation - Coherent: {query_metadata['is_coherent']}, "
                    f"Relevance: {query_metadata['relevance_score']:.3f}, "
                    f"Should process: {query_metadata['should_process']}")
-        
-        # Step 2: Handle low-quality or irrelevant queries
+          # Step 2: Handle low-quality or irrelevant queries
         if not query_metadata['should_process']:
             processing_time = time.time() - start_time
             
-            # Return appropriate response for poor quality input
+            # Return single appropriate response for poor quality input
             fallback_suggestions = [
-                TaskSuggestion(task_text="I'm not sure what specific tasks would be appropriate for this input."),
-                TaskSuggestion(task_text="Could you provide a clearer project description?"),
-                TaskSuggestion(task_text="The input doesn't seem to match typical project contexts."),
-                TaskSuggestion(task_text="Please describe your project objectives and requirements."),
-                TaskSuggestion(task_text="Try providing more details about the project type and goals.")
+                TaskSuggestion(task_text="I'm not sure what specific tasks would be appropriate for this input. Could you please provide a clearer project description related to software development, web applications, or other technical projects?")
             ]
             
             return TaskSuggestionResponse(
